@@ -2,6 +2,7 @@ public class BankAccount {
 
     private String account_number;
     private double balance;
+    private Person owner;
 
     public BankAccount(String account_number) {
         boolean valid_account = account_number.matches("^FR-[0-9]{4}-[0-9]{4}$");
@@ -22,6 +23,10 @@ public class BankAccount {
 
     public double getBalance() {
         return balance;
+    }
+
+    public Person getOwner() {
+        return owner;
     }
 
     public void deposit(double amount){
@@ -47,6 +52,8 @@ public class BankAccount {
         destination.deposit(amount);
     }
 
-
+    public void setOwner( Person owner){
+        this.owner = owner;
+    }
 
 }
