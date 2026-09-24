@@ -45,5 +45,29 @@ public class Main {
         System.out.println("historique du compte : " + account1.getAccount_number() + " " + account1.getOperations());
         System.out.println("historique du compte : " + account2.getAccount_number() + " " + account2.getOperations());
 
+        try {
+            account1.transfer(null, 20);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            account1.transfer(account1, 20);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            new BankAccount(null);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            new BankAccount("FR-1234");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
