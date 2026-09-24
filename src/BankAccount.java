@@ -4,6 +4,10 @@ public class BankAccount {
     private double balance;
 
     public BankAccount(String account_number) {
+        boolean valid_account = account_number.matches("^FR-[0-9]{4}-[0-9]{4}$");
+        if (!valid_account){
+            throw new IllegalArgumentException("Le numéro de compte est invalide.");
+        }
         this.account_number = account_number;
         this.balance = 0;
     }
