@@ -48,6 +48,7 @@ public class BankAccount {
             throw new IllegalArgumentException("Le montant d'un dépôt doit être supérieur à 0.");
         }
         balance += amount;
+
         Operation operation = new Operation(
                 1,
                 OperationType.DEPOSIT,
@@ -67,6 +68,16 @@ public class BankAccount {
             throw new IllegalArgumentException(("Solde insuffisant."));
         }
         balance -= amount;
+
+        Operation operation = new Operation(
+                2,
+                OperationType.WITHDRAWAL,
+                amount,
+                new Date(),
+                this,
+                null
+        );
+        operations.add(operation);
     }
 
     public void transfer(BankAccount destination, double amount){
