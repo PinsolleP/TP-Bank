@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankAccount {
 
     private String account_number;
     private double balance;
     private Person owner;
+    private List<Operation> operations;
 
     public BankAccount(String account_number) {
         boolean valid_account = account_number.matches("^FR-[0-9]{4}-[0-9]{4}$");
@@ -11,6 +15,7 @@ public class BankAccount {
         }
         this.account_number = account_number;
         this.balance = 0;
+        this.operations = new ArrayList<>();
     }
 
     public String getAccount_number() {
@@ -31,6 +36,10 @@ public class BankAccount {
 
     public void setOwner( Person owner){
         this.owner = owner;
+    }
+
+    public List<Operation> getOperations() {
+        return operations;
     }
 
     public void deposit(double amount){
@@ -54,6 +63,10 @@ public class BankAccount {
 
         this.withdraw(amount);
         destination.deposit(amount);
+    }
+
+    public void addOperation(Operation operation){
+        operations.add(operation);
     }
 
 }
