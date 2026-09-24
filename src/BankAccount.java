@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BankAccount {
@@ -47,6 +48,15 @@ public class BankAccount {
             throw new IllegalArgumentException("Le montant d'un dépôt doit être supérieur à 0.");
         }
         balance += amount;
+        Operation operation = new Operation(
+                1,
+                OperationType.DEPOSIT,
+                amount,
+                new Date(),
+                null,
+                this
+        );
+        operations.add(operation);
     }
 
     public void withdraw(double amount){
