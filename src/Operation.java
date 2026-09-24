@@ -66,6 +66,11 @@ public class Operation {
     public void setSource(BankAccount source) {
         this.source = source;
     }
+
+    @Override
+    public String toString(){
+        return type + " - " + amount + "€ - " + date;
+    }
 }
 
 
