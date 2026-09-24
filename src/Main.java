@@ -2,6 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Person person = new Person(1, "Pinsolle", "Paul");
+
         BankAccount account1 = new BankAccount("FR-1234-5678");
         BankAccount account2 = new BankAccount("FR-9876-5432");
 
@@ -20,11 +22,16 @@ public class Main {
         System.out.println("Solde account1 : " + account1.getBalance());
         System.out.println("Solde account2 : " + account2.getBalance());
 
-        try{
+        try {
             account1.withdraw(100);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+
+        person.addBankAccount(account1);
+        person.addBankAccount(account2);
+
+        System.out.println("Nombre de compte : " + person.getBank_accounts().size());
 
     }
 }
