@@ -20,4 +20,29 @@ public class BankAccount {
         return balance;
     }
 
+    public void deposit(double amount){
+        if (amount <= 0){
+            throw new IllegalArgumentException("Le montant d'un dépôt doit être supérieur à 0.");
+        }
+        balance += amount;
+    }
+
+    public void withdraw(double amount){
+        if (amount <= 0){
+            throw new IllegalArgumentException("Le montant d'un retrait doit être supérieur à 0.");
+        }
+        if ( amount > balance) {
+            throw new IllegalArgumentException(("Solde insuffisant."));
+        }
+        balance -= amount;
+    }
+
+    public void transfer(BankAccount destination, double amount){
+
+        this.withdraw(amount);
+        destination.deposit(amount);
+    }
+
+
+
 }
