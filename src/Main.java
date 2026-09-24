@@ -11,9 +11,17 @@ public class Main {
 
         account1.deposit(100);
 
+        for (Operation operation : account1.getOperations()){
+            System.out.println(operation.getType() + " - " + operation.getAmount());
+        }
+
         System.out.println("Après dépôt : " + account1.getBalance());
 
         account1.withdraw(30);
+
+        for (Operation operation : account1.getOperations()){
+            System.out.println(operation.getType() + " - " + operation.getAmount());
+        }
 
         System.out.println("Après retrait : " + account1.getBalance());
 
@@ -32,6 +40,7 @@ public class Main {
         person.addBankAccount(account2);
 
         System.out.println("Nombre de compte : " + person.getBank_accounts().size());
+        System.out.println(account1.getOwner().getFirst_name());
 
     }
 }
