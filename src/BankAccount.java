@@ -29,6 +29,10 @@ public class BankAccount {
         return owner;
     }
 
+    public void setOwner( Person owner){
+        this.owner = owner;
+    }
+
     public void deposit(double amount){
         if (amount <= 0){
             throw new IllegalArgumentException("Le montant d'un dépôt doit être supérieur à 0.");
@@ -50,10 +54,6 @@ public class BankAccount {
 
         this.withdraw(amount);
         destination.deposit(amount);
-    }
-
-    public void setOwner( Person owner){
-        this.owner = owner;
     }
 
 }
