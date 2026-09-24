@@ -10,8 +10,7 @@ public class BankAccount {
     private List<Operation> operations;
 
     public BankAccount(String account_number) {
-        boolean valid_account = account_number.matches("^FR-[0-9]{4}-[0-9]{4}$");
-        if (!valid_account){
+        if ( account_number == null || !account_number.matches("^FR-[0-9]{4}-[0-9]{4}$")){
             throw new IllegalArgumentException("Le numéro de compte est invalide.");
         }
         this.account_number = account_number;
@@ -81,6 +80,14 @@ public class BankAccount {
     }
 
     public void transfer(BankAccount destination, double amount){
+
+        if (destination == null){
+            throw new IllegalArgumentException("Le compte destinataire n'existe pas.");
+        }
+
+        if( destination == this){
+            throw new IllegalArgumentException("Le compte source et le compte destinataire doivent être différents.");
+        }
 
         if (amount <= 0){
             throw new IllegalArgumentException("Le montant d'un retrait doit être supérieur à 0.");
