@@ -82,12 +82,39 @@ public class BankAccount {
 
     public void transfer(BankAccount destination, double amount){
 
-        this.withdraw(amount);
-        destination.deposit(amount);
+        if (amount <= 0){
+            throw new IllegalArgumentException("Le montant d'un retrait doit être supérieur à 0.");
+        }
+        if ( amount > balance) {
+            throw new IllegalArgumentException(("Solde insuffisant."));
+        }
+
+        removeBalance(amount);
+        destination.addBalance(amount);
+
+        Operation operation = new Operation(
+                3,
+                OperationType.TRANSFER,
+                amount,
+                new Date(),
+                this,
+                destination
+        );
+        this.addOperation(operation);
+        destination.addOperation(operation);
+
     }
 
     public void addOperation(Operation operation){
         operations.add(operation);
+    }
+
+    private void removeBalance(double amount){
+        balance -= amount;
+    }
+
+    private void addBalance(double amount){
+        balance += amount;
     }
 
 }
