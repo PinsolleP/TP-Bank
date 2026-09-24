@@ -1,13 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
 
     private int id_person;
     private String first_name;
     private String last_name;
+    private List<BankAccount> bank_accounts;
 
     public Person(int id_person, String first_name, String last_name) {
         this.id_person = id_person;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.bank_accounts = new ArrayList<>();
     }
 
     public int getId_person() {
@@ -32,5 +37,14 @@ public class Person {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public List<BankAccount> getBank_accounts() {
+        return bank_accounts;
+    }
+
+    public void addBankAccount(BankAccount account){
+        bank_accounts.add(account);
+        account.setOwner(this);
     }
 }
