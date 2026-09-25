@@ -1,12 +1,16 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class TestDatabase {
 
     public static void main(String[] args) {
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            System.out.println("Driver MariaDB chargé !");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Driver MariaDB introuvable.");
+            Connection connection = DatabaseConnection.getConnection();
+            System.out.println("Connexion réussie !");
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Erreur de connexion : " + e.getMessage());
         }
     }
 }
